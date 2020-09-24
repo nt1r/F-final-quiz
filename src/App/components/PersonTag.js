@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.scss';
 
-class MemberTag extends React.Component {
+class PersonTag extends React.Component {
   render() {
     return (
       <div className="memberTagDiv">
@@ -13,4 +13,4 @@ class MemberTag extends React.Component {
   }
 }
 
-export default MemberTag;
+export default PersonTag;

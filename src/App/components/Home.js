@@ -1,22 +1,25 @@
 import React from 'react';
 import '../App.scss';
 import GroupSection from './GroupSection';
-import MemberSection from './MemberSection';
+import TraineeSection from './TraineeSection';
 import {
   addNewTraineeUrl,
   assignGroupUrl,
   getAllTraineesUrl,
+  getAllTrainersUrl,
   getCachedAssignGroupUrl,
   makeHttpRequest,
 } from '../utils/http';
+import TrainerSection from './TrainerSection';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      trainers: [],
       trainees: [],
-      teamList: [],
+      groupList: [],
       addMemberInputVisible: false,
     };
   }
@@ -29,12 +32,20 @@ class Home extends React.Component {
       });
     });
 
+    makeHttpRequest('get', getAllTrainersUrl).then((response) => {
+      console.log(response.data);
+      this.setState({
+        trainers: response.data,
+      });
+    });
+
     makeHttpRequest('get', getCachedAssignGroupUrl).then((response) => {
       console.log(response.data);
       this.setState({
-        teamList: response.data,
+        groupList: response.data,
       });
     });
+    // extract method here
   }
 
   onAddMemberKeyPress = (event) => {
@@ -66,7 +77,7 @@ class Home extends React.Component {
       .then((response) => {
         console.log(response.data);
         this.setState({
-          teamList: response.data,
+          groupList: response.data,
         });
       })
       .catch((error) => {
@@ -78,8 +89,14 @@ class Home extends React.Component {
   render() {
     return (
       <main>
-        <GroupSection teamList={this.state.teamList} onClickButton={this.onClickAssignButton} />
-        <MemberSection
+        <GroupSection teamList={this.state.groupList} onClickButton={this.onClickAssignButton} />
+        <TrainerSection
+          trainers={this.state.trainers}
+          inputVisible={this.state.addMemberInputVisible}
+          onKeyPress={this.onAddMemberKeyPress}
+          changeInputVisible={this.changeAddMemberInputVisible}
+        />
+        <TraineeSection
           trainees={this.state.trainees}
           inputVisible={this.state.addMemberInputVisible}
           onKeyPress={this.onAddMemberKeyPress}

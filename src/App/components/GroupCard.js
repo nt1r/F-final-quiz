@@ -1,9 +1,9 @@
 import React from 'react';
 import '../App.scss';
-import MemberTag from './MemberTag';
+import PersonTag from './PersonTag';
 import { makeHttpRequest, renameTeamNameUrl } from '../utils/http';
 
-class TeamCard extends React.Component {
+class GroupCard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -64,7 +64,7 @@ class TeamCard extends React.Component {
         )}
         <div>
           {members.map((member) => {
-            return <MemberTag id={member.id} name={member.name} />;
+            return <PersonTag id={member.id} name={member.name} />;
           })}
         </div>
       </div>
@@ -72,4 +72,4 @@ class TeamCard extends React.Component {
   }
 }
 
-export default TeamCard;
+export default GroupCard;

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.scss';
-import TeamCard from './TeamCard';
+import GroupCard from './GroupCard';
 
 class GroupSection extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class GroupSection extends React.Component {
         </div>
         {teamList.map((team, index) => {
           return (
-            <TeamCard
+            <GroupCard
               name={team.name}
               members={team.memberList}
               index={index}
