@@ -5,9 +5,9 @@ class MemberTag extends React.Component {
   render() {
     return (
       <div className="memberTagDiv">
-        <p>
+        <span>
           {this.props.id}. {this.props.name}
-        </p>
+        </span>
       </div>
     );
   }

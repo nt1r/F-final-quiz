@@ -4,12 +4,12 @@ import MemberTag from './MemberTag';
 
 class MemberSection extends React.Component {
   render() {
-    const { members, inputVisible, onKeyPress, changeInputVisible } = this.props;
+    const { trainees, inputVisible, onKeyPress, changeInputVisible } = this.props;
     return (
       <section>
         <h1>学员列表</h1>
         <div className="member_list_div">
-          {members.map((member) => {
+          {trainees.map((member) => {
             return <MemberTag id={member.id} name={member.name} />;
           })}
           {inputVisible ? (

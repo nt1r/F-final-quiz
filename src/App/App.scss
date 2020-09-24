@@ -1,6 +1,7 @@
 @use '../style/_variables';
 @use '~antd/dist/antd.css';
-@use '../style/_trainee';
+@use '../style/trainee';
+@import '../style/mixin';
 
 .App {
   background-color: lightgray;
@@ -15,9 +16,9 @@
 
 .memberTagDiv {
   background-color: darkgray;
-  padding: 5px 15px;
-  margin: 10px 20px;
-  width: 80px;
+  padding: 10px 20px;
+  margin: 20px 20px;
+  width: 120px;
   text-align: center;
   display: inline-block;
 }
@@ -26,8 +27,8 @@
   background-color: darkgray;
   padding: 5px 15px;
   margin: 10px 20px;
-  width: 111px;
-  height: 58px;
+  width: 120px;
+  height: 45px;
   text-align: center;
   display: inline-block;
 }
@@ -36,8 +37,8 @@
   background-color: darkgray;
   padding: 5px 15px;
   margin: 10px 20px;
-  width: 80px;
-  height: 46px;
+  width: 100px;
+  height: 36px;
   text-align: center;
   display: inline-block;
   border: 2px solid black;

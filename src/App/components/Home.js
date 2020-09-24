@@ -5,7 +5,7 @@ import MemberSection from './MemberSection';
 import {
   addNewTraineeUrl,
   assignGroupUrl,
-  getAllMembersUrl,
+  getAllTraineesUrl,
   getCachedAssignGroupUrl,
   makeHttpRequest,
 } from '../utils/http';
@@ -15,17 +15,17 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      members: [],
+      trainees: [],
       teamList: [],
       addMemberInputVisible: false,
     };
   }
 
   componentDidMount() {
-    makeHttpRequest('get', getAllMembersUrl).then((response) => {
+    makeHttpRequest('get', getAllTraineesUrl).then((response) => {
       console.log(response.data);
       this.setState({
-        members: response.data,
+        trainees: response.data,
       });
     });
 
@@ -44,7 +44,7 @@ class Home extends React.Component {
       })
         .then((response) => {
           this.setState({
-            members: response.data,
+            trainees: response.data,
             addMemberInputVisible: false,
           });
         })
@@ -80,7 +80,7 @@ class Home extends React.Component {
       <main>
         <GroupSection teamList={this.state.teamList} onClickButton={this.onClickAssignButton} />
         <MemberSection
-          members={this.state.members}
+          trainees={this.state.trainees}
           inputVisible={this.state.addMemberInputVisible}
           onKeyPress={this.onAddMemberKeyPress}
           changeInputVisible={this.changeAddMemberInputVisible}

@@ -9,7 +9,7 @@ export function makeHttpRequest(method, url, dto) {
 }
 
 export const HOST_IP = 'http://localhost:8080';
-export const getAllMembersUrl = `${HOST_IP}/group-api/init-list`;
+export const getAllTraineesUrl = `${HOST_IP}/trainees?grouped=false`;
 export const addNewTraineeUrl = `${HOST_IP}/trainees`;
 export const assignGroupUrl = `${HOST_IP}/group/assignment`;
 export const getCachedAssignGroupUrl = `${HOST_IP}/group-api/cached-assign`;
