@@ -1,4 +1,6 @@
-@import '../style/_variables';
+@use '../style/_variables';
+@use '~antd/dist/antd.css';
+@use '../style/_trainee';
 
 .App {
   background-color: lightgray;

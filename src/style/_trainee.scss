@@ -1,0 +1,13 @@
+$base-margin: 20px;
+$base-padding: 10px;
+
+.trainee-main {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: $base-padding * 2;
+  padding-bottom: $base-padding * 6;
+}
+
+.submit-button {
+  margin-right: $base-margin;
+}
