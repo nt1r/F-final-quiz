@@ -3,7 +3,7 @@ import '../App.scss';
 import GroupSection from './GroupSection';
 import TraineeSection from './TraineeSection';
 import {
-  addNewTraineeUrl,
+  addNewTrainerUrl,
   assignGroupUrl,
   getAllTraineesUrl,
   getAllTrainersUrl,
@@ -50,14 +50,14 @@ class Home extends React.Component {
 
   onAddMemberKeyPress = (event) => {
     if (event.key === 'Enter') {
-      makeHttpRequest('post', addNewTraineeUrl, {
+      makeHttpRequest('post', addNewTrainerUrl, {
         name: event.target.value,
       })
         .then((response) => {
-          this.setState({
-            trainees: response.data,
+          this.setState((prev) => ({
+            trainers: prev.trainers.concat(response.data),
             addMemberInputVisible: false,
-          });
+          }));
         })
         .catch((error) => {
           // do nothing here
@@ -86,6 +86,8 @@ class Home extends React.Component {
       });
   };
 
+  onClickAddTraineeButton = () => {};
+
   render() {
     return (
       <main>
@@ -98,9 +100,7 @@ class Home extends React.Component {
         />
         <TraineeSection
           trainees={this.state.trainees}
-          inputVisible={this.state.addMemberInputVisible}
-          onKeyPress={this.onAddMemberKeyPress}
-          changeInputVisible={this.changeAddMemberInputVisible}
+          onClickAddButton={this.onClickAddTraineeButton}
         />
       </main>
     );
