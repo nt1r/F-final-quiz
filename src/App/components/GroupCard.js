@@ -14,12 +14,11 @@ class GroupCard extends React.Component {
     };
   }
 
-  onRenameKeyPress = (event, index) => {
+  onRenameKeyPress = (event, id) => {
     if (event.key === 'Enter') {
       const targetValue = event.target.value;
-      makeHttpRequest('post', renameTeamNameUrl, {
+      makeHttpRequest('patch', renameTeamNameUrl(id), {
         newName: targetValue,
-        index,
       })
         .then((response) => {
           if (response.status === 200) {
@@ -28,13 +27,14 @@ class GroupCard extends React.Component {
             });
             // eslint-disable-next-line no-restricted-globals
             history.go(0);
-          } else if (response.status === 409) {
-            message.error('命名与原先相同');
           }
         })
         .catch((error) => {
-          // do nothing here
-          console.log(error);
+          if (error.response.status === 400) {
+            message.error('命名与原先相同');
+          } else if (error.response.status === 404) {
+            message.error('小组ID未找到');
+          }
         });
     }
   };
@@ -46,14 +46,14 @@ class GroupCard extends React.Component {
   };
 
   render() {
-    const { name, trainees, trainers } = this.props;
+    const { id, name, trainees, trainers } = this.props;
     return (
       <div className="group-card-div">
         {this.state.inputVisible ? (
           <input
             type="text"
             className="renameInput"
-            onKeyPress={(event) => this.onRenameKeyPress(event)}
+            onKeyPress={(event) => this.onRenameKeyPress(event, id)}
           />
         ) : (
           <button type="button" className="teamNameButton" onClick={this.onClickRenameButton}>

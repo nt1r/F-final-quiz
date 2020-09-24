@@ -20,4 +20,4 @@ export const deleteTrainerUrl = (id) => `${HOST_IP}/trainers/${id}`;
 
 export const assignGroupUrl = `${HOST_IP}/groups/auto-grouping`;
 export const getAssignedGroupsUrl = `${HOST_IP}/groups/`;
-export const renameTeamNameUrl = `${HOST_IP}/group-api/rename-team`;
+export const renameTeamNameUrl = (id) => `${HOST_IP}/groups/${id}`;
