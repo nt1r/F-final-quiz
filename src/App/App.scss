@@ -1,0 +1,70 @@
+@import '../style/_variables';
+
+.App {
+  background-color: lightgray;
+  margin: 0px;
+  padding: 0px;
+}
+
+.member_list_div {
+  margin: 0px 20px;
+  padding-bottom: 20px;
+}
+
+.memberTagDiv {
+  background-color: darkgray;
+  padding: 5px 15px;
+  margin: 10px 20px;
+  width: 80px;
+  text-align: center;
+  display: inline-block;
+}
+
+.memberTagButton {
+  background-color: darkgray;
+  padding: 5px 15px;
+  margin: 10px 20px;
+  width: 111px;
+  height: 58px;
+  text-align: center;
+  display: inline-block;
+}
+
+.add_member_input {
+  background-color: darkgray;
+  padding: 5px 15px;
+  margin: 10px 20px;
+  width: 80px;
+  height: 46px;
+  text-align: center;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+.groupSectionTitleDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.assignButton {
+  float: right;
+  background-color: red;
+  color: white;
+  margin-right: 30px;
+  width: 100px;
+  height: 40px;
+}
+
+.teamNameButton {
+  width: 100%;
+  font-size: 1.4em;
+  background-color: slategray;
+}
+
+.renameInput {
+  width: 100%;
+  font-size: 1.4em;
+  background-color: slategray;
+  text-align: center;
+}
