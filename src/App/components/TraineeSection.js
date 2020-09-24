@@ -10,7 +10,7 @@ class TraineeSection extends React.Component {
         <h1>学员列表</h1>
         <div className="trainee_list_div">
           {trainees.map((trainee) => {
-            return <TraineeTag trainee={trainee} />;
+            return <TraineeTag key={trainee.id} trainee={trainee} />;
           })}
           <button type="button" className="addPersonTagButton" onClick={onClickAddButton}>
             + 添加学员

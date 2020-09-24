@@ -22,6 +22,7 @@
   width: $tag-width;
   text-align: center;
   display: inline-block;
+  font-size: $base-font-size;
 }
 
 .addPersonTagButton {
@@ -45,7 +46,11 @@
   border: 2px solid black;
 }
 
-.groupSectionTitleDiv {
+.group-section {
+  margin-bottom: $base-margin;
+}
+
+.group-section-title-div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,6 +66,7 @@
 }
 
 .teamNameButton {
+  @include flex-layout(row, flex-end, center);
   width: 100%;
   font-size: 1.4em;
   background-color: slategray;
@@ -81,4 +87,14 @@
   background-color: lightgray;
   margin: $base-margin / 5;
   padding: $base-padding;
+}
+
+.group-card-div {
+  border: black solid 2px;
+  margin: $base-margin;
+}
+
+.group-name-span {
+  position: absolute;
+  right: 50%;
 }

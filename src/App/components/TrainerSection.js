@@ -10,7 +10,7 @@ class TrainerSection extends React.Component {
         <h1>讲师列表</h1>
         <div className="trainer_list_div">
           {trainers.map((trainer) => {
-            return <TrainerTag member trainer={trainer} />;
+            return <TrainerTag trainer={trainer} key={trainer.id} />;
           })}
           {inputVisible ? (
             <input type="text" className="add_person_input" onKeyPress={onKeyPress} />

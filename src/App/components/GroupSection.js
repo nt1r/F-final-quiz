@@ -4,22 +4,23 @@ import GroupCard from './GroupCard';
 
 class GroupSection extends React.Component {
   render() {
-    const { teamList, onClickButton } = this.props;
+    const { groupList, onClickButton } = this.props;
     return (
-      <section>
-        <div className="groupSectionTitleDiv">
+      <section className="group-section">
+        <div className="group-section-title-div">
           <h1>分组列表</h1>
           <button type="button" className="assignButton" onClick={onClickButton}>
             分组学员
           </button>
         </div>
-        {teamList.map((team, index) => {
+        {groupList.map((group) => {
           return (
             <GroupCard
-              name={team.name}
-              members={team.memberList}
-              index={index}
-              inputVisible={false}
+              key={group.id}
+              id={group.id}
+              name={group.name}
+              trainees={group.trainees}
+              trainers={group.trainers}
             />
           );
         })}

@@ -54,11 +54,11 @@ class TrainerTag extends React.Component {
 
     return (
       <Popover content={popOverContent}>
-        <button className="personTagButton" type="button">
+        <button className="personTagButton" type="button" onClick={this.onClickTag}>
           {id}. {name}
         </button>
         <Modal
-          title="删除学员"
+          title="删除讲师"
           visible={this.state.modalVisible}
           onOk={this.handleDelete}
           confirmLoading={this.state.confirmLoading}
@@ -78,7 +78,7 @@ class TrainerTag extends React.Component {
           ]}
         >
           <p>
-            确定要删除学员{id}: {name} ?
+            确定要删除讲师{id}: {name} ?
           </p>
         </Modal>
       </Popover>

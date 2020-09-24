@@ -1,15 +1,16 @@
 import React from 'react';
 import '../App.scss';
+import { message } from 'antd';
 import TraineeTag from './TraineeTag';
 import { makeHttpRequest, renameTeamNameUrl } from '../utils/http';
+import TrainerTag from './TrainerTag';
 
 class GroupCard extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
-      inputVisible: props.inputVisible,
-      name: props.name,
+      inputVisible: false,
     };
   }
 
@@ -23,11 +24,12 @@ class GroupCard extends React.Component {
         .then((response) => {
           if (response.status === 200) {
             this.setState({
-              name: targetValue,
               inputVisible: false,
             });
+            // eslint-disable-next-line no-restricted-globals
+            history.go(0);
           } else if (response.status === 409) {
-            console.log('repeat name');
+            message.error('命名与原先相同');
           }
         })
         .catch((error) => {
@@ -37,34 +39,33 @@ class GroupCard extends React.Component {
     }
   };
 
+  onClickRenameButton = () => {
+    this.setState((prev) => ({
+      inputVisible: !prev.inputVisible,
+    }));
+  };
+
   render() {
-    const { members, index } = this.props;
+    const { name, trainees, trainers } = this.props;
     return (
-      <div>
+      <div className="group-card-div">
         {this.state.inputVisible ? (
           <input
             type="text"
             className="renameInput"
-            onKeyPress={(event) => this.onRenameKeyPress(event, index)}
+            onKeyPress={(event) => this.onRenameKeyPress(event)}
           />
         ) : (
-          <button
-            type="button"
-            className="teamNameButton"
-            onClick={(event) => {
-              console.log(event);
-              this.setState({
-                // eslint-disable-next-line react/no-access-state-in-setstate
-                inputVisible: !this.state.inputVisible,
-              });
-            }}
-          >
-            {this.state.name}
+          <button type="button" className="teamNameButton" onClick={this.onClickRenameButton}>
+            <span className="group-name-span">{name}</span>
+            {trainers.map((trainer) => {
+              return <TrainerTag key={trainer.id} trainer={trainer} />;
+            })}
           </button>
         )}
         <div>
-          {members.map((member) => {
-            return <TraineeTag id={member.id} name={member.name} />;
+          {trainees.map((trainee) => {
+            return <TraineeTag key={trainee.id} trainee={trainee} />;
           })}
         </div>
       </div>

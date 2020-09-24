@@ -5,9 +5,9 @@ import TraineeSection from './TraineeSection';
 import {
   addNewTrainerUrl,
   assignGroupUrl,
-  getAllTraineesUrl,
-  getAllTrainersUrl,
-  getCachedAssignGroupUrl,
+  getAllNotGroupedTraineesUrl,
+  getAllNotGroupedTrainersUrl,
+  getAssignedGroupsUrl,
   makeHttpRequest,
 } from '../utils/http';
 import TrainerSection from './TrainerSection';
@@ -25,22 +25,19 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    makeHttpRequest('get', getAllTraineesUrl).then((response) => {
-      console.log(response.data);
+    makeHttpRequest('get', getAllNotGroupedTraineesUrl).then((response) => {
       this.setState({
         trainees: response.data,
       });
     });
 
-    makeHttpRequest('get', getAllTrainersUrl).then((response) => {
-      console.log(response.data);
+    makeHttpRequest('get', getAllNotGroupedTrainersUrl).then((response) => {
       this.setState({
         trainers: response.data,
       });
     });
 
-    makeHttpRequest('get', getCachedAssignGroupUrl).then((response) => {
-      console.log(response.data);
+    makeHttpRequest('get', getAssignedGroupsUrl).then((response) => {
       this.setState({
         groupList: response.data,
       });
@@ -75,9 +72,18 @@ class Home extends React.Component {
   onClickAssignButton = () => {
     makeHttpRequest('post', assignGroupUrl)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           groupList: response.data,
+        });
+        makeHttpRequest('get', getAllNotGroupedTraineesUrl).then((res) => {
+          this.setState({
+            trainees: res.data,
+          });
+        });
+        makeHttpRequest('get', getAllNotGroupedTrainersUrl).then((res) => {
+          this.setState({
+            trainers: res.data,
+          });
         });
       })
       .catch((error) => {
@@ -91,7 +97,7 @@ class Home extends React.Component {
   render() {
     return (
       <main>
-        <GroupSection teamList={this.state.groupList} onClickButton={this.onClickAssignButton} />
+        <GroupSection groupList={this.state.groupList} onClickButton={this.onClickAssignButton} />
         <TrainerSection
           trainers={this.state.trainers}
           inputVisible={this.state.addMemberInputVisible}
@@ -101,8 +107,6 @@ class Home extends React.Component {
         <TraineeSection
           trainees={this.state.trainees}
           onClickAddButton={this.onClickAddTraineeButton}
-          handleDelete={this.handleDelete}
-          handleCancel={this.handleTraineeModalCancel}
         />
       </main>
     );
