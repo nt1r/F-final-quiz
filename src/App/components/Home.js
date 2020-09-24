@@ -101,6 +101,8 @@ class Home extends React.Component {
         <TraineeSection
           trainees={this.state.trainees}
           onClickAddButton={this.onClickAddTraineeButton}
+          handleDelete={this.handleDelete}
+          handleCancel={this.handleTraineeModalCancel}
         />
       </main>
     );

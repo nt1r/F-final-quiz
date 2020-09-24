@@ -2,6 +2,7 @@
 @import '~antd/dist/antd.css';
 @import '../style/trainee';
 @import '../style/mixin';
+// @use not working
 
 .App {
   background-color: lightgray;
@@ -14,11 +15,11 @@
   padding-bottom: 20px;
 }
 
-.memberTagDiv {
+.personTagButton {
   background-color: darkgray;
   padding: 10px 20px;
   margin: 20px 20px;
-  width: 120px;
+  width: $tag-width;
   text-align: center;
   display: inline-block;
 }
@@ -27,7 +28,7 @@
   background-color: darkgray;
   padding: 5px 15px;
   margin: 10px 20px;
-  width: 120px;
+  width: $tag-width;
   height: 45px;
   text-align: center;
   display: inline-block;
