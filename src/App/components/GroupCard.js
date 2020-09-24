@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.scss';
-import PersonTag from './PersonTag';
+import TraineeTag from './TraineeTag';
 import { makeHttpRequest, renameTeamNameUrl } from '../utils/http';
 
 class GroupCard extends React.Component {
@@ -64,7 +64,7 @@ class GroupCard extends React.Component {
         )}
         <div>
           {members.map((member) => {
-            return <PersonTag id={member.id} name={member.name} />;
+            return <TraineeTag id={member.id} name={member.name} />;
           })}
         </div>
       </div>

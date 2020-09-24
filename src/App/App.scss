@@ -1,6 +1,6 @@
-@use '../style/_variables';
-@use '~antd/dist/antd.css';
-@use '../style/trainee';
+@import '../style/_variables';
+@import '~antd/dist/antd.css';
+@import '../style/trainee';
 @import '../style/mixin';
 
 .App {
@@ -70,4 +70,14 @@
   font-size: 1.4em;
   background-color: slategray;
   text-align: center;
+}
+
+.pop-over-div {
+  padding: $base-padding;
+}
+
+.tag-props-span {
+  background-color: lightgray;
+  margin: $base-margin / 5;
+  padding: $base-padding;
 }
