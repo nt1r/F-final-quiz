@@ -3,6 +3,7 @@ import '../App.scss';
 import { Button, message, Modal, Popover } from 'antd';
 import { deleteTrainerUrl, makeHttpRequest } from '../utils/http';
 
+// TODO 与TraineeTag组件有很多重复逻辑，可以抽象、提取成公共组件
 class TrainerTag extends React.Component {
   constructor(props) {
     super(props);

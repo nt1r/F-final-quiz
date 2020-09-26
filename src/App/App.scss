@@ -1,4 +1,5 @@
 @import '../style/_variables';
+// TODO feedback：可以不用在这里引入ant design的样式
 @import '~antd/dist/antd.css';
 @import '../style/trainee';
 @import '../style/mixin';
@@ -24,6 +25,7 @@
   display: inline-block;
 }
 
+//TODO feedback：class命名不符合规范，不建议用驼峰
 .addPersonTagButton {
   background-color: darkgray;
   padding: 5px 15px;

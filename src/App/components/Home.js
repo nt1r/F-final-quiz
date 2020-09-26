@@ -26,6 +26,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     makeHttpRequest('get', getAllTraineesUrl).then((response) => {
+      // TODO feedback：不要提交console.log
       console.log(response.data);
       this.setState({
         trainees: response.data,

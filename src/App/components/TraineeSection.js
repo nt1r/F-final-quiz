@@ -8,6 +8,7 @@ class TraineeSection extends React.Component {
     return (
       <section>
         <h1>学员列表</h1>
+        {/* TODO feedback：列表用ul li更符合语义 */}
         <div className="trainee_list_div">
           {trainees.map((trainee) => {
             return <TraineeTag trainee={trainee} />;

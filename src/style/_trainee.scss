@@ -1,5 +1,6 @@
 @import '../style/_variables';
 
+// TODO feedback：style文件里一般定义公用样式，trainee-main应该跟Trainee组件一起，这样更易维护修改
 .trainee-main {
   width: 80%;
   margin: 0 auto;

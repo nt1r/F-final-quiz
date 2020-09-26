@@ -7,6 +7,7 @@ class GroupCard extends React.Component {
   constructor(props) {
     super(props);
 
+    // TODO feedback：用props去初始化state会存在一些问题
     this.state = {
       inputVisible: props.inputVisible,
       name: props.name,
@@ -16,6 +17,8 @@ class GroupCard extends React.Component {
   onRenameKeyPress = (event, index) => {
     if (event.key === 'Enter') {
       const targetValue = event.target.value;
+
+      // TODO feedback：可以再抽象一层，专门处理CRUD的逻辑，会更易维护
       makeHttpRequest('post', renameTeamNameUrl, {
         newName: targetValue,
         index,
@@ -39,6 +42,7 @@ class GroupCard extends React.Component {
 
   render() {
     const { members, index } = this.props;
+    // TODO feedback：解构state会更易读些
     return (
       <div>
         {this.state.inputVisible ? (
@@ -52,6 +56,7 @@ class GroupCard extends React.Component {
             type="button"
             className="teamNameButton"
             onClick={(event) => {
+              // TODO feedback：不建议提交console.log
               console.log(event);
               this.setState({
                 // eslint-disable-next-line react/no-access-state-in-setstate
@@ -62,6 +67,7 @@ class GroupCard extends React.Component {
             {this.state.name}
           </button>
         )}
+        {/* TODO feedback：列表用ul li更符合语义 */}
         <div>
           {members.map((member) => {
             return <TraineeTag id={member.id} name={member.name} />;

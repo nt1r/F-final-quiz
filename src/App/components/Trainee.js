@@ -4,8 +4,10 @@ import { Form, Input, Button } from 'antd';
 import '../../style/_trainee.scss';
 import { addNewTraineeUrl, makeHttpRequest } from '../utils/http';
 
+// TODO feedback：命名不太合理，组件功能应该是创建Trainee
 class Trainee extends React.Component {
   render() {
+    // TODO 方法应当定义在render之外
     const onSubmit = (values) => {
       makeHttpRequest('post', addNewTraineeUrl, values).then((response) => {
         console.log(response.data);
@@ -18,6 +20,7 @@ class Trainee extends React.Component {
     };
 
     return (
+      // TODO feedback：使用section标签更合理
       <main className="trainee-main">
         <h1>添加学员</h1>
         <Form layout="vertical" name="nest-messages" onFinish={onSubmit}>
